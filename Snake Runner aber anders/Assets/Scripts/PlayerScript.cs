@@ -1,19 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
-public class CircleScript : MonoBehaviour
+public class PlayerScript : MonoBehaviour
 {
     [SerializeField] float speed;
 
     public string itemMode = "left";
-    
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -25,7 +24,7 @@ public class CircleScript : MonoBehaviour
     }
 
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("wall"))
         {
@@ -38,7 +37,7 @@ public class CircleScript : MonoBehaviour
         itemMode = iMode;
     }
 
-    
+
 
     private void checkInput()
     {
@@ -57,7 +56,7 @@ public class CircleScript : MonoBehaviour
     }
 
     private void die()
-        {
-           Destroy(gameObject);
-        }
+    {
+        Destroy(gameObject);
+    }
 }
