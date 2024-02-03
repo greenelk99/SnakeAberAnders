@@ -7,6 +7,9 @@ public class CircleScript : MonoBehaviour
 {
     [SerializeField] float speed;
 
+    public string itemMode = "left";
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,8 +23,20 @@ public class CircleScript : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            gameObject.transform.Rotate(new Vector3(0, 0, 90));
+            switch (itemMode)
+            {
+                case "left":
+                    gameObject.transform.Rotate(new Vector3(0, 0, 90));
+                    break;
+                case "right":
+                    gameObject.transform.Rotate(new Vector3(0, 0, -90));
+                    break;
+            }
         }
     }
 
+    public void changeItemMode(string iMode)
+    {
+        itemMode = iMode;
+    }
 }
