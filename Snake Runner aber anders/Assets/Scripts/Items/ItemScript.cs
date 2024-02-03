@@ -21,6 +21,15 @@ public class ItemScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         player.GetComponent<CircleScript>().changeItemMode(itemName);
-        Destroy(gameObject);
+
+        die();
+    }
+
+    private void die()
+    {
+        if(itemName != "death")
+        {
+            Destroy(gameObject);
+        }
     }
 }
