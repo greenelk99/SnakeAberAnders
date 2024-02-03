@@ -21,6 +21,26 @@ public class CircleScript : MonoBehaviour
     {
         gameObject.transform.Translate(new Vector3(0, 1, 0) * Time.deltaTime * speed);
 
+        checkInput();
+    }
+
+
+    public void changeItemMode(string iMode)
+    {
+        if(iMode != "death")
+        {
+            itemMode = iMode;
+        }
+        else
+        {
+            die();
+        }
+    }
+
+    
+
+    private void checkInput()
+    {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             switch (itemMode)
@@ -35,8 +55,8 @@ public class CircleScript : MonoBehaviour
         }
     }
 
-    public void changeItemMode(string iMode)
-    {
-        itemMode = iMode;
-    }
+    private void die()
+        {
+           Destroy(gameObject);
+        }
 }

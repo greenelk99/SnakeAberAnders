@@ -20,7 +20,7 @@ public class ItemScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        player.GetComponent<CircleScript>().itemMode = itemName;
+        player.GetComponent<CircleScript>().changeItemMode(itemName);
         Destroy(gameObject);
     }
 }
