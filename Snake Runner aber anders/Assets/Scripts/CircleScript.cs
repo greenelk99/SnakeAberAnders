@@ -25,16 +25,17 @@ public class CircleScript : MonoBehaviour
     }
 
 
-    public void changeItemMode(string iMode)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(iMode != "death")
-        {
-            itemMode = iMode;
-        }
-        else
+        if (collision.gameObject.CompareTag("wall"))
         {
             die();
         }
+    }
+
+    public void changeItemMode(string iMode)
+    {
+        itemMode = iMode;
     }
 
     
