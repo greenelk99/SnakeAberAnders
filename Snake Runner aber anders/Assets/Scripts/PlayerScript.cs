@@ -8,6 +8,9 @@ public class PlayerScript : MonoBehaviour
 
     public string itemMode = "left";
 
+    public Sprite roboLeft;
+    public Sprite roboRight;
+
 
     // Start is called before the first frame update
     void Start()
@@ -47,9 +50,11 @@ public class PlayerScript : MonoBehaviour
             {
                 case "left":
                     gameObject.transform.Rotate(new Vector3(0, 0, 90));
+                    roboLeft = gameObject.GetComponent<Sprite>();
                     break;
                 case "right":
                     gameObject.transform.Rotate(new Vector3(0, 0, -90));
+                    roboRight = gameObject.GetComponent<Sprite>();
                     break;
             }
         }
