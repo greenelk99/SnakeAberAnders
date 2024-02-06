@@ -8,6 +8,7 @@ public class PlayerScript : MonoBehaviour
 
     public string itemMode = "left";
 
+    public SpriteRenderer spriteRenderer;
     public Sprite roboLeft;
     public Sprite roboRight;
 
@@ -15,7 +16,7 @@ public class PlayerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -25,6 +26,7 @@ public class PlayerScript : MonoBehaviour
 
         checkInput();
     }
+
 
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -50,11 +52,11 @@ public class PlayerScript : MonoBehaviour
             {
                 case "left":
                     gameObject.transform.Rotate(new Vector3(0, 0, 90));
-                    roboLeft = gameObject.GetComponent<Sprite>();
+                    this.gameObject.GetComponent<SpriteRenderer>().sprite = roboLeft;
                     break;
                 case "right":
                     gameObject.transform.Rotate(new Vector3(0, 0, -90));
-                    roboRight = gameObject.GetComponent<Sprite>();
+                    this.gameObject.GetComponent<SpriteRenderer>().sprite = roboRight;
                     break;
             }
         }
