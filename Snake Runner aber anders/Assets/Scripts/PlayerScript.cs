@@ -8,7 +8,6 @@ public class PlayerScript : MonoBehaviour
 
     public string itemMode = "left";
 
-    public SpriteRenderer spriteRenderer;
     public Sprite roboLeft;
     public Sprite roboRight;
 
@@ -16,7 +15,7 @@ public class PlayerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
+
     }
 
     // Update is called once per frame
