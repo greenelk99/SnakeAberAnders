@@ -75,6 +75,8 @@ public class PlayerScript : MonoBehaviour
 
     private void die()
     {
-        Destroy(gameObject);
+        gameObject.transform.position = new Vector3(8, -4.5f);
+        gameObject.transform.rotation = Quaternion.identity;
+        itemMode = "left";
     }
 }
