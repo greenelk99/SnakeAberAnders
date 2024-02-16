@@ -29,12 +29,25 @@ public class PlayerScript : MonoBehaviour
 
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("wall"))
         {
             die();
         }
+        if (collision.gameObject.CompareTag("left"))
+        {
+            this.gameObject.GetComponent<SpriteRenderer>().sprite = roboLeft;
+            itemMode = "left";
+            Destroy(collision.gameObject);
+        }
+        if (collision.gameObject.CompareTag("right"))
+        {
+            this.gameObject.GetComponent<SpriteRenderer>().sprite = roboRight;
+            itemMode = "right";
+            Destroy(collision.gameObject);
+        }
+
     }
 
     public void changeItemMode(string iMode)
@@ -52,11 +65,9 @@ public class PlayerScript : MonoBehaviour
             {
                 case "left":
                     gameObject.transform.Rotate(new Vector3(0, 0, 90));
-                    this.gameObject.GetComponent<SpriteRenderer>().sprite = roboLeft;
                     break;
                 case "right":
                     gameObject.transform.Rotate(new Vector3(0, 0, -90));
-                    this.gameObject.GetComponent<SpriteRenderer>().sprite = roboRight;
                     break;
             }
         }
@@ -64,8 +75,6 @@ public class PlayerScript : MonoBehaviour
 
     private void die()
     {
-        gameObject.transform.position = new Vector3(8, -4.5f, 0);
-        gameObject.transform.rotation = Quaternion.identity;
-        itemMode = "left";
+        Destroy(gameObject);
     }
 }
