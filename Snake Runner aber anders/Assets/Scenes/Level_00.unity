@@ -5602,8 +5602,20 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 814455347443640732, guid: fdb44bc50a2f02841af7d7ec824c8803, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 814455347443640732, guid: fdb44bc50a2f02841af7d7ec824c8803, type: 3}
+      propertyPath: m_Size.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3260397102514150196, guid: fdb44bc50a2f02841af7d7ec824c8803, type: 3}
+      propertyPath: timeToMove
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8163637012424801326, guid: fdb44bc50a2f02841af7d7ec824c8803, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8769413500289056465, guid: fdb44bc50a2f02841af7d7ec824c8803, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5611,7 +5623,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8769413500289056465, guid: fdb44bc50a2f02841af7d7ec824c8803, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.5
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 8769413500289056465, guid: fdb44bc50a2f02841af7d7ec824c8803, type: 3}
       propertyPath: m_LocalPosition.z
