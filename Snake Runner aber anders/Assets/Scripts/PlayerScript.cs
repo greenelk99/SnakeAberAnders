@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {
-    [SerializeField] float speed;
+    [SerializeField] float stepSize;
+    [SerializeField] float stepSpeed;
 
     public string itemMode = "left";
 
@@ -16,14 +18,17 @@ public class PlayerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        InvokeRepeating("Movement", stepSpeed, stepSpeed);
     }
 
     // Update is called once per frame
     void Update()
     {
-        gameObject.transform.Translate(new Vector3(0, 1, 0) * Time.deltaTime * speed);
+        checkInput();
+    }
 
+    void Movement(){
+        gameObject.transform.Translate(new Vector3(0, 1, 0) * stepSize);
         checkInput();
     }
 
@@ -75,8 +80,10 @@ public class PlayerScript : MonoBehaviour
 
     private void die()
     {
-        gameObject.transform.position = new Vector3(8, -4.5f);
-        gameObject.transform.rotation = Quaternion.identity;
-        itemMode = "left";
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //gameObject.transform.position = new Vector3(8, -4.0f);
+        //gameObject.transform.rotation = Quaternion.identity;
+        //itemMode = "left";
+        //this.gameObject.GetComponent<SpriteRenderer>().sprite = roboLeft;
     }
 }

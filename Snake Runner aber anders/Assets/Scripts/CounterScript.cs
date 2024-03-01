@@ -21,6 +21,5 @@ public class CounterScript : MonoBehaviour
     void Update()
     {
         coinText.text = coins.ToString();
-        Debug.Log(coins);
     }
 }
