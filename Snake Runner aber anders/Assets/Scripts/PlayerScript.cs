@@ -14,6 +14,8 @@ public class PlayerScript : MonoBehaviour
     public Sprite roboLeft;
     public Sprite roboRight;
 
+    private bool canUseItem = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -27,9 +29,11 @@ public class PlayerScript : MonoBehaviour
         checkInput();
     }
 
-    void Movement(){
+    void Movement()
+    {
         gameObject.transform.Translate(new Vector3(0, 1, 0) * stepSize);
         checkInput();
+        canUseItem = true;
     }
 
 
@@ -64,7 +68,7 @@ public class PlayerScript : MonoBehaviour
 
     private void checkInput()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && canUseItem)
         {
             switch (itemMode)
             {
@@ -75,6 +79,7 @@ public class PlayerScript : MonoBehaviour
                     gameObject.transform.Rotate(new Vector3(0, 0, -90));
                     break;
             }
+            canUseItem = false;
         }
     }
 
