@@ -19,6 +19,7 @@ public class PlayerScript : MonoBehaviour
     private float gridY;
 
     private bool canUseItem = false;
+    private bool canMove = true;
 
 
     // Start is called before the first frame update
@@ -38,19 +39,31 @@ public class PlayerScript : MonoBehaviour
     void Movement()
     {
         //gameObject.transform.Translate(new Vector3(0, 1, 0) * stepSize);
-        gameObject.transform.Translate(new Vector3(0, gridY, 0));
-        checkInput();
+        if (canMove)
+        {
+            gameObject.transform.Translate(new Vector3(0, gridY, 0));
+        }
         canUseItem = true;
     }
 
-
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("wall"))
         {
-            die();
+            canMove = false;
         }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("wall"))
+        {
+            canMove = true;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
         if (collision.gameObject.CompareTag("left"))
         {
             this.gameObject.GetComponent<SpriteRenderer>().sprite = roboLeft;
