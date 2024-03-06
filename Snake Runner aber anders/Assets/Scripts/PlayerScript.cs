@@ -6,13 +6,17 @@ using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {
-    [SerializeField] float stepSize;
+    //[SerializeField] float stepSize;
     [SerializeField] float stepSpeed;
+    //new Grid grid = gameObject.Find("Grid").GetComponent<Grid>();
+    //new Vector3 stepSize = grid.cellSize;
 
     public string itemMode = "left";
 
     public Sprite roboLeft;
     public Sprite roboRight;
+    private Grid grid;
+    private float gridY;
 
     private bool canUseItem = false;
 
@@ -20,6 +24,8 @@ public class PlayerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        grid = GameObject.Find("Grid").GetComponent<Grid>();
+        gridY = grid.cellSize.y;
         InvokeRepeating("Movement", stepSpeed, stepSpeed);
     }
 
@@ -31,7 +37,8 @@ public class PlayerScript : MonoBehaviour
 
     void Movement()
     {
-        gameObject.transform.Translate(new Vector3(0, 1, 0) * stepSize);
+        //gameObject.transform.Translate(new Vector3(0, 1, 0) * stepSize);
+        gameObject.transform.Translate(new Vector3(0, gridY, 0));
         checkInput();
         canUseItem = true;
     }
