@@ -20,7 +20,7 @@ public class PlayerScript : MonoBehaviour
 
     private bool canUseItem = false;
     private bool canMove = true;
-
+    private bool isinvulnerable = false;
 
     // Start is called before the first frame update
     void Start()
@@ -76,6 +76,15 @@ public class PlayerScript : MonoBehaviour
             itemMode = "right";
             Destroy(collision.gameObject);
         }
+        if (collision.gameObject.CompareTag("indestructible"))
+        {
+            itemMode = "indestructible";
+            Destroy(collision.gameObject);
+        }
+        if (collision.gameObject.CompareTag("death") && !isinvulnerable)
+        {
+            die();
+        }
 
     }
 
@@ -97,6 +106,14 @@ public class PlayerScript : MonoBehaviour
                     break;
                 case "right":
                     gameObject.transform.Rotate(new Vector3(0, 0, -90));
+                    break;
+                case "indestructible":
+                    isinvulnerable = !isinvulnerable;
+
+                    if (isinvulnerable)
+                    {
+                        //hier soll der Sprite gewechselt werden
+                    }
                     break;
             }
             canUseItem = false;
