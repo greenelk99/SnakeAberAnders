@@ -7,8 +7,8 @@ TagManager:
   - wall
   - left
   - right
-  - indestructible
   - death
+  - indestructible
   layers:
   - Default
   - TransparentFX

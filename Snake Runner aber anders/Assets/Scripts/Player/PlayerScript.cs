@@ -6,10 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {
-    //[SerializeField] float stepSize;
     [SerializeField] float stepSpeed;
-    //new Grid grid = gameObject.Find("Grid").GetComponent<Grid>();
-    //new Vector3 stepSize = grid.cellSize;
 
     public string itemMode = "left";
 
