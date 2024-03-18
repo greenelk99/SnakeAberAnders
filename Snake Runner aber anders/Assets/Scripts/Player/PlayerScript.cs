@@ -8,8 +8,10 @@ public class PlayerScript : MonoBehaviour
 {
     [SerializeField] float stepSpeed;
 
+    private float dashSpeed;
+    private float dashDuration;
     public string itemMode = "left";
-
+    public string prevItemMode;
     public Sprite roboLeft;
     public Sprite roboRight;
     private Grid grid;
@@ -18,6 +20,7 @@ public class PlayerScript : MonoBehaviour
     private bool canUseItem = false;
     private bool canMove = true;
     private bool isinvulnerable = false;
+    private bool canDash = false;
 
     // Start is called before the first frame update
     void Start()
@@ -81,6 +84,14 @@ public class PlayerScript : MonoBehaviour
         if (collision.gameObject.CompareTag("death") && !isinvulnerable)
         {
             die();
+      
+        }
+        if (collision.gameObject.CompareTag("dash"))
+        {
+            //canUseItem = true;
+            prevItemMode = itemMode;
+            itemMode = "dash";
+            Destroy(collision.gameObject);
         }
 
     }
@@ -112,10 +123,28 @@ public class PlayerScript : MonoBehaviour
                         //hier soll der Sprite gewechselt werden
                     }
                     break;
+                case "dash":
+                    isinvulnerable = true;
+                    StartCoroutine(dash());
+                    isinvulnerable = false;
+                    itemMode = prevItemMode;
+                    break;
             }
             canUseItem = false;
         }
     }
+
+    private IEnumerator dash()
+    {
+        dashSpeed = 5f;
+        dashDuration = 0.5f;
+        canMove = false;
+        GetComponent<Rigidbody2D>().velocity = new Vector2(0, dashSpeed);
+        yield return new WaitForSeconds(dashDuration);
+        GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+        canMove = true;
+    }
+
 
     private void die()
     {

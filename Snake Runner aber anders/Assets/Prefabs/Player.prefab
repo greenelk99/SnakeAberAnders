@@ -268,5 +268,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stepSpeed: 0
   itemMode: left
-  roboLeft: {fileID: 0}
-  roboRight: {fileID: 0}
+  roboLeft: {fileID: 21300000, guid: 42c3400a6cf3669448ded80a5365e653, type: 3}
+  roboRight: {fileID: 21300000, guid: be598e85f40ae5a4989fcc25cd52adfd, type: 3}
